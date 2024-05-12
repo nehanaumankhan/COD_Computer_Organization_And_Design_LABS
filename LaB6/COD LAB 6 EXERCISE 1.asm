@@ -2,7 +2,7 @@
 
     msg1: .asciiz "THIS PROGRAM PRINTS THE SUM OF N INTEGERS\n\nENTER THE VALUE OF N: "
     msg2: .asciiz "SUM TILL N (1+2+3+...+n) = "
-    error_msg: .asciiz "\nERROR: PLEASE ENTER POSITIVE INTEGER!\n\n"
+    error_msg: .asciiz "\nERROR: PLEASE ENTER A POSITIVE INTEGER!\n\n"
 
 .text
 .globl main
