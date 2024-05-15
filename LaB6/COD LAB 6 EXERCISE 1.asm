@@ -1,7 +1,7 @@
 .data
-    msg1: .asciiz "THIS PROGRAM PRINTS THE SUM OF N INTEGERS\n\nENTER THE VALUE OF N: "  # Prompt for user to enter the value of N
+    msg1: .asciiz "THIS PROGRAM PRINTS THE SUM OF N INTEGERS\nENTER THE VALUE OF N: "  # Prompt for user to enter the value of N
     msg2: .asciiz "SUM TILL N (1+2+3+...+n) = "  # Message for displaying the sum till N
-    error_msg: .asciiz "\nERROR: PLEASE ENTER A POSITIVE INTEGER!\n\n"  # Error message for negative integer input
+    error_msg: .asciiz "ERROR: PLEASE ENTER A POSITIVE INTEGER!\n\n"  # Error message for negative integer input
 
 .text
 .globl main
