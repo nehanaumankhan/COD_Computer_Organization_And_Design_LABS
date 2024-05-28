@@ -8,7 +8,9 @@
 .globl main
 .ent main
 
-main:   li $v0, 4           # Print msg1
+main:   
+#_____________________________CALLER_BEGINS_____________________________#
+        li $v0, 4           # Print msg1
         la $a0, msg1
         syscall
 
@@ -46,31 +48,32 @@ main:   li $v0, 4           # Print msg1
         li $v0, 10  # For explicit exit from main
         syscall
         jr $ra
-        .end main
 
-        power_calculator:   
-                            bne $a2, $0, CONTINUE
-                            addi $v1, $0, 1
-                            j END
+.end main
+#_____________________________CALLER_ENDS_______________________________#
+power_calculator:   
+        bne $a2, $0, CONTINUE
+        addi $v1, $0, 1
+        j END
                             
-                            CONTINUE:
-                            addi $sp, $sp, -8   # Making room for 4 registers
-                            sw $s0, 4($sp)      # Push $s0
-                            sw $s1, 0($sp)      # Push $s1
+        CONTINUE:
+                addi $sp, $sp, -8   # Making room for 4 registers
+                sw $s0, 4($sp)      # Push $s0
+                sw $s1, 0($sp)      # Push $s1
 
-                            addi $s0, $0, 1             # $s0 (Result) = 1 
-                            addi $s1, $s1, 0            # $s1 (Iterator) = 0
-                            LOOP:   mult $s0, $a1       # $s0 * $a1
-                                    mflo $s0            # $s0 = $s0 * $a1
-                                    addi $s1, $s1, 1    # $s1 += 1
-                                    bne $s1, $a2, LOOP  # If $s1 != $a2 -> Jump To Loop
+                addi $s0, $0, 1             # $s0 (Result) = 1 
+                addi $s1, $s1, 0            # $s1 (Iterator) = 0
+                LOOP:   mult $s0, $a1       # $s0 * $a1
+                        mflo $s0            # $s0 = $s0 * $a1
+                        addi $s1, $s1, 1    # $s1 += 1
+                        bne $s1, $a2, LOOP  # If $s1 != $a2 -> Jump To Loop
 
-                            move $v1, $s0       # Move $s0 in $v1
+                move $v1, $s0       # Move $s0 in $v1
                             
-                            END:
-                            lw $s1, 0($sp)      # Pop $s1
-                            lw $s0, 4($sp)      # Pop $s0
-                            addi $sp, $sp, 8    # Adust SP        
-                            jr $ra              # Return back
+        END:
+        lw $s1, 0($sp)      # Pop $s1
+        lw $s0, 4($sp)      # Pop $s0
+        addi $sp, $sp, 8    # Adust SP        
+        jr $ra              # Return back
                             
         
