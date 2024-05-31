@@ -2,7 +2,7 @@
     msg1: .asciiz "THIS PROGRAM CALCULATES (NUMBER ^ POWER)\nENTER NUMBER: "
     msg2: .asciiz "ENTER POWER: "
     msg3: .asciiz "RESULT: "
-    ERROR: .asciiz "📌ERROR: PLEASE ENTER POSITIVE NUMBER!\n"
+    ERROR: .asciiz "📌ERROR: PLEASE ENTER POSITIVE POWER!\n"
 
 .text
 .globl main
